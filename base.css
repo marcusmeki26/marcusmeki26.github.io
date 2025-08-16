@@ -1,0 +1,42 @@
+:root{
+  --primaryColor: #32127A; /* Primary color */
+  --secondaryColor: #fff; /* Secondary color */
+  --accentColor: #40E0D0; /* Accent color - a supplementary color used to highlight or emphasize certain elements */
+}
+
+*, *::before, *::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Makes the element's padding and margin take up with the height of width defined */
+}
+
+html{
+  font-size: 16px;  
+}
+
+body{
+  font-family: "Roboto Mono", sans-serif;
+  font-weight: 400;
+  /* background-image: linear-gradient(45deg, var(--accentColor) 5%, var(--primaryColor)); */
+  background-image: linear-gradient(320deg, var(--accentColor) 5%, var(--primaryColor));
+  background-repeat: no-repeat;
+  /* background-color: var(--primaryColor); */
+  color: var(--secondaryColor);
+  overflow-x: hidden;
+}
+
+ul{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  font-size: 1rem;
+  color: var(--secondaryColor);
+}
+
+@media screen and (max-width: 768px){
+  html{
+    font-size: 12px;
+  }
+}
