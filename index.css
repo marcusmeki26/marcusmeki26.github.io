@@ -269,7 +269,7 @@
 .internship-experience{
   margin-top: 10rem;
   scroll-margin-top: 5rem;
-  padding-bottom: 3rem;
+  margin-bottom: 3rem;
 }
 
 .timeline .content h2{
@@ -379,5 +379,73 @@
 @media only screen and (max-width: 1240px) and (min-width: 641px) {
   .certificates-skills{
     flex-direction: column;
+  }
+}
+
+/* Small screen breakpoint */
+@media screen and (max-width: 1080px){
+  /* Header */
+  .header-container #header-links{
+    display: none;
+  }
+
+  .home-container, 
+  .about-container, 
+  .research-projects,
+  .internship-experience{
+    padding: 0 2rem;
+  }
+
+  .home-container .introductory-message h1:nth-child(1){
+    display: inline;
+  }
+
+  .home-container .image-container{
+    display: none;
+  }
+
+  /* ABOUT */
+  .about-container .certificates-skills{
+    flex-wrap: wrap;
+  }
+
+  .certificates-skills .upskill-certificate > div,
+  .certificates-skills .current-skills-container{
+    animation: timeline-left-appear-mobile .4s linear forwards;
+    animation-timeline: view();
+    animation-range: entry 0 cover 40%;
+  }
+
+  /* RESEARCH/PROJECTS */
+  .timeline{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .timeline::after{
+    display: none;
+  }
+
+  .timeline-container{
+    width: 100%;
+  }
+
+  .timeline-container::after{
+    display: none;
+  }
+
+  .research-projects .right{
+    left: 0;
+  }
+}
+
+@keyframes timeline-left-appear-mobile {
+  from{
+    opacity: 0;
+    transform: translateX(-500px);
+  }
+  to{
+    opacity: 1;
+    transform: translateX(0);
   }
 }
