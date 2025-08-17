@@ -383,7 +383,7 @@
 }
 
 /* Small screen breakpoint */
-@media screen and (max-width: 1080px){
+@media screen and (max-width: 1007px){
   /* Header */
   .header-container #header-links{
     display: none;
@@ -396,8 +396,13 @@
     padding: 0 2rem;
   }
 
-  .home-container .introductory-message h1:nth-child(1){
+  .home-container .introductory-message h1:nth-child(1),
+  .home-container .introductory-message h1:nth-child(2){
     display: inline;
+  }
+
+  .home-container .introductory-message span{
+    display: block;
   }
 
   .home-container .image-container{
