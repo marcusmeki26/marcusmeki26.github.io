@@ -39,3 +39,15 @@ export function displayContentChild(divChild, arrItems){
     }
   })
 }
+
+export function displaySkillImgAndText(items, parent){
+  // Creating img tag
+  const img = document.createElement("img");
+  img.src = items[0]; // Setting the value for the src attribute
+  parent.appendChild(img);
+
+  // li tag text
+  const span = document.createElement("span");
+  span.textContent = items[1];
+  parent.appendChild(span);
+}

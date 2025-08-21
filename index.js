@@ -1,7 +1,8 @@
 import { 
   changeHeaderBackgroundColor, 
   changeHeaderLinks,
-  displayContentChild
+  displayContentChild,
+  displaySkillImgAndText
 } from "./functions.js";
 
 const ulParent = document.getElementById("header-links"); // Fetches the parent
@@ -15,68 +16,119 @@ ulChildren.forEach(element => {
 });
 
 // Certification DOM
+// Create an a tag where it links to my certificate
 const certificationItems = [
-  'CodeChum C II Course (2022)',
-  'CCNAv7: Introduction to Networks (2023)',
-  'Introduction to Cybersecurity (2023)',
-  'Participated in Cybersecurity during the 13 IT Skills Olympics (2024)',
-  'Information Technology Specialist in Python (2025)',
-  'Information Technology Specialist in Networking(2025)',
-  'Cisco Certified Support Technician Cybersecurity (2025)'
+  ['./files/C-certificate.pdf', 'CodeChum C II Course (2022)'],
+  ['./files/introduction-to-networks.pdf', 'CCNAv7: Introduction to Networks (2023)'],
+  ['./files/introduction-to-cybersecurity.pdf', 'Introduction to Cybersecurity (2023)'],
+  ['', 'Participated in Cybersecurity during the 13 IT Skills Olympics (2024)'],
+  ['./files/python-certiport.pdf', 'Information Technology Specialist in Python (2025)'],
+  ['./files/networking-certiport.pdf', 'Information Technology Specialist in Networking(2025)'],
+  ['./files/cybersecurity-certiport.pdf', 'Cisco Certified Support Technician Cybersecurity (2025)']
 ];
 
 const certificationItemsContainer = document.getElementById("certification-items");
 certificationItems.forEach(item => {
   const li = document.createElement('li');
-  li.textContent = item;
+  const a = document.createElement("a");
+  a.textContent = item[1];
+  a.href = item[0];
+  a.target = "_blank";
+  a.title = "View Certificate";
+
+  li.appendChild(a);
   certificationItemsContainer.appendChild(li);
+  // li.textContent = item;
+  // certificationItemsContainer.appendChild(li);
 });
 
 // Upskilling DOM
 const currentlyUpskillingItems = [
-  'Java Spring Boot',
-  'Angular'
+  ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg', 'Java Spring Boot'],
+  ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg', 'Angular']
 ];
 
 const currentlyUpskillingContainer = document.getElementById("currently-upskilling-items");
 currentlyUpskillingItems.forEach(item => {
   const li = document.createElement("li");
-  li.textContent = item;
+  li.classList.add("skill-item");
+
+  // Creates the image and span tag
+  displaySkillImgAndText(item, li);
+
+  // Append to the parent
   currentlyUpskillingContainer.appendChild(li);
 });
 
 // Skills/Knowledge DOM
 const skillKnowledgeItems = [
-  ['Fontend:','Angular', 'Vue.js', 'HTML 5', 'CCS 5', 'JavaScript', 'Tailwind CSS'],
-  ['Backend:', 'PHP', 'Java'],
-  ['Database:', 'MySQL', 'Oracle', 'MariaDB', 'Firebase'],
-  ['Tools:', 'Git', 'Github', 'Postman', 'Elasticseach', 'Flyway', 'Flutter', 'ChartJS'],
-  ['Other Skills:', 'Networking', 'Cybersecurity', 'Linux/Unix OS', 'LAMP Stack', 'Python', 'C'],
+  ['Frontend:',
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg','Angular'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg', 'Vue.js'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg', 'HTML 5'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg', 'CCS 3'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg', 'JavaScript'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg', 'Tailwind CSS']
+  ],
+  ['Backend:', 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg', 'PHP'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg', 'Java']
+  ],
+  ['Database:', 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg', 'MySQL'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg', 'Oracle'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mariadb/mariadb-original.svg', 'MariaDB'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg', 'Firebase']
+  ],
+  ['Tools:', 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg', 'Git'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg', 'Github'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg', 'Postman'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/elasticsearch/elasticsearch-original.svg', 'Elasticseach'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg', 'Flutter'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/chartjs/chartjs-original.svg', 'ChartJS'], 
+    'Flyway'
+  ],
+  ['Other Skills:', 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg', 'Linux/Unix OS'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg', 'Python'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg', 'C'], 
+    'LAMP Stack', 
+    'Networking', 
+    'Cybersecurity'
+  ],
 ];
 
 const skillKnowledgeContainer = document.getElementById("skills-knowledge-lists");
 skillKnowledgeItems.forEach(items => {
-  const div = document.createElement("div");
-  div.classList.add("skills-category");
+  const parentDiv = document.createElement("div");
+  parentDiv.classList.add("skills-category");
 
   const h3 = document.createElement("h3");
   h3.textContent = items[0];
-  div.appendChild(h3);
+  parentDiv.appendChild(h3);
 
   const childDiv = document.createElement("div");
-
+  childDiv.classList.add("skill-item-container")
   items.slice(1).forEach(item => {
-    const span = document.createElement("span");
-    span.textContent = item;
-    if(items[items.length-1] != item){
-      span.textContent = span.textContent +  " -"; 
+    if(item instanceof Array){
+      const skillItemDiv = document.createElement("div");
+      skillItemDiv.classList.add("skill-item");
+
+      // Creates the image and span tag
+      displaySkillImgAndText(item, skillItemDiv);
+
+      childDiv.appendChild(skillItemDiv);
+    }else{
+      const span = document.createElement("span");
+      span.textContent = item;
+      childDiv.appendChild(span);
+      span.textContent = "- " + span.textContent; 
     }
-    span.style.marginRight = ".5em";
-    childDiv.appendChild(span);
   });
 
-  div.appendChild(childDiv);
-  skillKnowledgeContainer.appendChild(div);
+  parentDiv.appendChild(childDiv);
+  skillKnowledgeContainer.appendChild(parentDiv);
 });
 
 // Research/Projects DOM
@@ -84,7 +136,7 @@ const researchProjecrtsItems = [
   ['2021', 'Project: Command-Line Application Banking Simulation', 'Programming Language: C'],
   ['2022', 'Project: Point of Sales System', 'Programming Language: Java'],
   ['2023-2024', 'Research: A Web Based Reservation Management System with Email and SMS Verification for A and Z Events Management', 'Tech Stack: HTML - CSS - JavaScript - PHP - MySQL'],
-  ['2024-2025', 'Research: e-Collect: Vending Machine for Plastic Bottle and Tin Cans for City Environment Waste Management Office (CEWMO) - Antipolo City', 'Tech Stack: HTML - CSS - JavaScript - PHP - MySQL'],
+  ['2024-2025', 'Research: e-Collect Vending Machine for Plastic Bottle and Tin Cans for City Environment Waste Management Office (CEWMO) - Antipolo City', 'Tech Stack: HTML - CSS - JavaScript - PHP - MySQL - Arduino'],
   ['2025', 'Personal Project: Currently working on Shopping Website', 'Tech Stack: Angular - Java Spring Boot - MySQL & Elasticsearch - Flyway']
 ];
 
@@ -151,5 +203,5 @@ document.addEventListener("scroll", () => {
 // For opening resume
 const viewResume = document.getElementById("view-resume");
 viewResume.onclick = () => {
-  window.open("./resume.pdf", "_blank");
+  window.open("./files/RESUME.pdf", "_blank");
 }

@@ -1,11 +1,32 @@
 @import url("./base.css");
 
-.home-section{
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+/* SHARED PADDING STYLE */
+.home-container, 
+.about-container, 
+.research-projects,
+.internship-experience{
+  padding: 0 10rem;
 }
 
+/* SHARED H1 FONT STYLE */
+.about-container .about-introductory h1,
+.research-projects .research-projects-introductory h1,
+.internship-experience .internship-experience-introductory h1{
+  font-family: "Poppins", sans-serif;
+  font-size: 4rem;
+  line-height: 1.2;
+  color: var(--accentColor);
+}
+
+/* SHARED P FONT STYLE */
+.about-container .about-introductory p,
+.research-projects .research-projects-introductory p,
+.internship-experience .internship-experience-introductory p{
+  font-size: 1.5rem;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+/* HEADER STYLES */
 .header-container{
   position: fixed;
   top: 0;
@@ -50,11 +71,11 @@
   animation: border-grow .4s forwards; /* forwards is used to keep the final state after the animation */
 }
 
-.home-container, 
-.about-container, 
-.research-projects,
-.internship-experience{
-  padding: 0 10rem;
+/* HOME SECTION */
+.home-section{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .home-container{
@@ -119,27 +140,12 @@
   border-radius: 50%;
 }
 
+/* ABOUT SECTION */
 .about-container{
   display: flex;
   flex-direction: column;
   gap: 1rem;
   scroll-margin-top: 5rem;
-}
-
-.about-container .about-introductory h1,
-.research-projects .research-projects-introductory h1,
-.internship-experience .internship-experience-introductory h1{
-  font-family: "Poppins", sans-serif;
-  font-size: 4rem;
-  line-height: 1.2;
-  color: var(--accentColor);
-}
-
-.about-container .about-introductory p,
-.research-projects .research-projects-introductory p,
-.internship-experience .internship-experience-introductory p{
-  font-size: 1.5rem;
-  font-family: "Roboto Condensed", sans-serif;
 }
 
 .about-container .certificates-skills{
@@ -158,12 +164,34 @@
   color: var(--accentColor);
 }
 
-.about-container .certificates-container ul,
-.about-container .upskilling-container ul{
+.about-container .certificates-container ul{
   padding-left: 2em;
   list-style: initial;
-  font-size: 1.3em;
 }  
+
+.about-container .certificates-container ul li a{
+  font-size: 1.3em;
+}
+
+.about-container .upskilling-container ul{
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  font-size: 1.3em;
+}
+
+/* SHARED WITH UPSKILL SECTION */
+.about-container .skill-item{
+  display: flex;
+  align-items: center;
+  gap: .5em;
+}
+
+.about-container .skill-item img{
+  width: 1.5rem;
+  height: 1.5rem;
+}
+/* SHARED WITH UPSKILL SECTION */
 
 .about-container .upskill-certificate{
   display: flex;
@@ -199,6 +227,12 @@
   font-size: 1.5rem;
 }
 
+.about-container .skills-category .skill-item-container{
+  display: flex; 
+  gap: .5em;
+}
+
+/* RESEARCH-PROJECTS SECTION */
 .research-projects{
   margin-top: 10rem;
   scroll-margin-top: 5rem;
@@ -266,10 +300,11 @@
   border-radius: 2rem;
 }
 
+/* INTERNSHIP SECTION */
 .internship-experience{
   margin-top: 10rem;
   scroll-margin-top: 5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 10rem;
 }
 
 .timeline .content h2{
@@ -299,6 +334,48 @@
   font-size: 1.3em;
 }  
 
+/* FOOTER SECTION */
+.footer-container{
+  height: 20vh;
+  width: 100%;
+  background-color: var(--primaryColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.footer-container .socials-container{
+  padding: 0 1em;
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+
+.footer-container .socials-container h2{
+  color: var(--accentColor);
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.footer-container .socials-container .social-items{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-container .socials-container .social-items div{
+  display: flex;
+  align-items: center;
+  gap: .5em;
+}
+
+.footer-container .socials-container .social-items a{
+  color: var(--secondaryColor);
+}
+
+/* ANIMATIONS */
 .about-container > div,
 .research-projects > div{
   animation: appear .4s linear forwards;
@@ -444,6 +521,7 @@
   }
 }
 
+/* MOBILE ANIMATION STYLE */
 @keyframes timeline-left-appear-mobile {
   from{
     opacity: 0;
