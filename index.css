@@ -175,7 +175,6 @@
 
 .about-container .upskilling-container ul{
   display: flex;
-  gap: 1rem;
   flex-direction: column;
   font-size: 1.3em;
 }
@@ -184,7 +183,6 @@
 .about-container .skill-item{
   display: flex;
   align-items: center;
-  gap: .5em;
 }
 
 .about-container .skill-item img{
@@ -229,7 +227,7 @@
 
 .about-container .skills-category .skill-item-container{
   display: flex; 
-  gap: .5em;
+  column-gap: 1em;
 }
 
 /* RESEARCH-PROJECTS SECTION */

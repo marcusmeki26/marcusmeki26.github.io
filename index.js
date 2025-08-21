@@ -123,7 +123,6 @@ skillKnowledgeItems.forEach(items => {
       const span = document.createElement("span");
       span.textContent = item;
       childDiv.appendChild(span);
-      span.textContent = "- " + span.textContent; 
     }
   });
 
