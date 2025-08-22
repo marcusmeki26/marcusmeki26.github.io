@@ -27,17 +27,32 @@ export function changeHeaderLinks(sections, ulChildren){
 
 // Helper methods
 export function displayContentChild(divChild, arrItems){
-  return arrItems.forEach(item => {
-    if(arrItems.indexOf(item) == 0){
-      const h2 = document.createElement("h2");
-      h2.textContent = item;
-      divChild.appendChild(h2);
+
+  const h2 = document.createElement("h2");
+  h2.textContent = arrItems[0];
+  divChild.appendChild(h2);
+
+  const p = document.createElement("p");
+  p.textContent = arrItems[1];
+  divChild.appendChild(p);
+
+  // Image and language implementation
+  const techStackParentDiv = document.createElement("div");
+  techStackParentDiv.classList.add("tech-stack-items");
+  arrItems.slice(3).forEach(item => {
+    const techStackChildDiv = document.createElement("div");
+    if(item instanceof Array){
+      displaySkillImgAndText(item, techStackChildDiv);
     }else{
-      const p = document.createElement("p");
-      p.textContent = item;
-      divChild.appendChild(p);
+      const span = document.createElement("span");
+      span.textContent = item;
+      
+      techStackChildDiv.appendChild(span);
     }
-  })
+    techStackParentDiv.appendChild(techStackChildDiv);
+  });
+
+  divChild.appendChild(techStackParentDiv);
 }
 
 export function displaySkillImgAndText(items, parent){

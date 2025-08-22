@@ -2,6 +2,7 @@
   --primaryColor: #32127A; /* Primary color */
   --secondaryColor: #fff; /* Secondary color */
   --accentColor: #40E0D0; /* Accent color - a supplementary color used to highlight or emphasize certain elements */
+  --accentColorBG: #4a15ad;
 }
 
 *, *::before, *::after{

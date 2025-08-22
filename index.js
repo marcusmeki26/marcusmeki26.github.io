@@ -2,7 +2,7 @@ import {
   changeHeaderBackgroundColor, 
   changeHeaderLinks,
   displayContentChild,
-  displaySkillImgAndText
+  displaySkillImgAndText,
 } from "./functions.js";
 
 const ulParent = document.getElementById("header-links"); // Fetches the parent
@@ -19,7 +19,7 @@ ulChildren.forEach(element => {
 // Create an a tag where it links to my certificate
 const certificationItems = [
   ['./files/C-certificate.pdf', 'CodeChum C II Course (2022)'],
-  ['./files/introduction-to-networks.pdf', 'CCNAv7: Introduction to Networks (2023)'],
+  ['./files/Introduction-to-networks.pdf', 'CCNAv7: Introduction to Networks (2023)'],
   ['./files/introduction-to-cybersecurity.pdf', 'Introduction to Cybersecurity (2023)'],
   ['', 'Participated in Cybersecurity during the 13 IT Skills Olympics (2024)'],
   ['./files/python-certiport.pdf', 'Information Technology Specialist in Python (2025)'],
@@ -120,9 +120,14 @@ skillKnowledgeItems.forEach(items => {
 
       childDiv.appendChild(skillItemDiv);
     }else{
+      const skillItemDiv = document.createElement("div");
+      skillItemDiv.classList.add("skill-item");
+
       const span = document.createElement("span");
       span.textContent = item;
-      childDiv.appendChild(span);
+
+      skillItemDiv.appendChild(span);
+      childDiv.appendChild(skillItemDiv);
     }
   });
 
@@ -132,40 +137,72 @@ skillKnowledgeItems.forEach(items => {
 
 // Research/Projects DOM
 const researchProjecrtsItems = [
-  ['2021', 'Project: Command-Line Application Banking Simulation', 'Programming Language: C'],
-  ['2022', 'Project: Point of Sales System', 'Programming Language: Java'],
-  ['2023-2024', 'Research: A Web Based Reservation Management System with Email and SMS Verification for A and Z Events Management', 'Tech Stack: HTML - CSS - JavaScript - PHP - MySQL'],
-  ['2024-2025', 'Research: e-Collect Vending Machine for Plastic Bottle and Tin Cans for City Environment Waste Management Office (CEWMO) - Antipolo City', 'Tech Stack: HTML - CSS - JavaScript - PHP - MySQL - Arduino'],
-  ['2025', 'Personal Project: Currently working on Shopping Website', 'Tech Stack: Angular - Java Spring Boot - MySQL & Elasticsearch - Flyway']
+  ['2021', 'Project: Command-Line Application Banking Simulation', 
+    '',
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg', 'C']
+  ],
+  ['2022', 'Project: Point of Sales System', 
+    '',
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg', 'Java']
+  ],
+  ['2023-2024', 'Research: A Web Based Reservation Management System with Email and SMS Verification for A and Z Events Management', 
+    '',
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg', 'HTML'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg', 'CSS'],
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg', 'JavaScript'],
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg', 'PHP'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg', 'MySQL']
+  ],
+  ['2024-2025', 'Research: e-Collect Vending Machine for Plastic Bottle and Tin Cans for City Environment Waste Management Office (CEWMO) - Antipolo City', 
+    'eCollect',
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg', 'HTML'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg', 'CSS'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg', 'JavaScript'], 
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg','PHP'],
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg', 'MySQL'],
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/arduino/arduino-original.svg', 'Arduino'],
+  ],
+  ['2025', 'Personal Project: Currently working on Shopping Website', 
+    '',
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg', 'Angular'],
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg', 'Java Spring Boot'],
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg', 'MySQL'],
+    ['https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/elasticsearch/elasticsearch-original.svg', 'Elasticsearch'],
+    'Flyway'
+  ]
 ];
 
 const timeLineContainer = document.getElementById("timeline");
 researchProjecrtsItems.forEach(arrItems => {
+  // Parent div
+  const div = document.createElement("div");
+
+  // Child div
+  const divChild = document.createElement("div");
+  divChild.classList.add("content");
+
   if((researchProjecrtsItems.indexOf(arrItems) % 2) == 0){
-    // creating parent container
-    const divLeft = document.createElement("div");
-    divLeft.classList.add("timeline-container");
-    divLeft.classList.add("left");
-    // creating child div
-    const divChild = document.createElement("div");
-    divChild.classList.add("content");
-    // child div children
-    displayContentChild(divChild, arrItems);
-    divLeft.appendChild(divChild);
-    timeLineContainer.appendChild(divLeft);
+    // Parent div implementation
+    div.classList.add("timeline-container");
+    div.classList.add("left");
   }else{
-    // creating parent container
-    const divLeft = document.createElement("div");
-    divLeft.classList.add("timeline-container");
-    divLeft.classList.add("right");
-    // creating child div
-    const divChild = document.createElement("div");
-    divChild.classList.add("content");
-    // child div children
-    displayContentChild(divChild, arrItems);
-    divLeft.appendChild(divChild);
-    timeLineContainer.appendChild(divLeft);
+    // Parent div implementation
+    div.classList.add("timeline-container");
+    div.classList.add("right");
   }
+  
+  displayContentChild(divChild, arrItems);
+
+  if(arrItems[2] != ''){
+    const a = document.createElement("a");
+    a.classList.add("view-more")
+    a.textContent = "View More";
+    divChild.appendChild(a);
+    a.href = "./project-details/project.html?project=" + arrItems[2];
+  }
+
+  div.appendChild(divChild);
+  timeLineContainer.appendChild(div);
 });
 
 // Internship Experience DOM

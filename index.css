@@ -26,6 +26,33 @@
   font-family: "Roboto Condensed", sans-serif;
 }
 
+/* SHARED CARD DESIGN */
+.about-container .skill-item,
+.timeline .timeline-container .content .tech-stack-items div{
+  display: flex;
+  align-items: center;
+}
+
+.about-container .skill-item img,
+.timeline .timeline-container .content .tech-stack-items img{
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Card style */
+#currently-upskilling-items li,
+#skills-knowledge-lists .skills-category .skill-item-container .skill-item,
+.timeline .timeline-container .content .tech-stack-items div{
+  display: flex;
+  column-gap: .5rem;
+  background-color: var(--accentColorBG);
+  max-width: max-content;
+  padding: .5rem;
+  border-radius: .5em;
+  font-weight: 500;
+}
+/* SHARED CARD DESIGN */
+
 /* HEADER STYLES */
 .header-container{
   position: fixed;
@@ -160,13 +187,9 @@
   background-color: var(--primaryColor);
 }
 
-.about-container .certificates-skills .certificates-container h1{
-  color: var(--accentColor);
-}
-
 .about-container .certificates-container ul{
   padding-left: 2em;
-  list-style: initial;
+  list-style: disc;
 }  
 
 .about-container .certificates-container ul li a{
@@ -175,21 +198,9 @@
 
 .about-container .upskilling-container ul{
   display: flex;
-  flex-direction: column;
+  column-gap: .5rem;
   font-size: 1.3em;
 }
-
-/* SHARED WITH UPSKILL SECTION */
-.about-container .skill-item{
-  display: flex;
-  align-items: center;
-}
-
-.about-container .skill-item img{
-  width: 1.5rem;
-  height: 1.5rem;
-}
-/* SHARED WITH UPSKILL SECTION */
 
 .about-container .upskill-certificate{
   display: flex;
@@ -202,6 +213,8 @@
 .about-container .current-skills-container h1{
   font-size: 2rem;
   color: var(--accentColor);
+  border-bottom: 1px solid var(--accentColor);
+  font-family: "Poppins", sans-serif;
 }
 
 .about-container .upskill-certificate .upskilling-container, 
@@ -227,7 +240,7 @@
 
 .about-container .skills-category .skill-item-container{
   display: flex; 
-  column-gap: 1em;
+  gap: .5em;
 }
 
 /* RESEARCH-PROJECTS SECTION */
@@ -298,6 +311,18 @@
   border-radius: 2rem;
 }
 
+.content .tech-stack-items{
+  display: flex;
+  gap: .5rem;
+  margin-top: .3rem;
+  flex-wrap: wrap;
+}
+
+.content .view-more{
+  text-decoration: underline;
+  font-size: 1rem;
+}
+
 /* INTERNSHIP SECTION */
 .internship-experience{
   margin-top: 10rem;
@@ -308,6 +333,8 @@
 .timeline .content h2{
   font-size: 2rem;
   color: var(--accentColor);
+  border-bottom: 1px solid var(--accentColor);
+  font-family: "Poppins", sans-serif;
 }
 
 .timeline .content p{
@@ -324,6 +351,8 @@
 .internship-experience .internship-experience-content h2{
   font-size: 2rem;
   color: var(--accentColor);
+  font-family: "Poppins", sans-serif;
+  border-bottom: 1px solid var(--accentColor);
 }
 
 .internship-experience .internship-experience-content ul{
